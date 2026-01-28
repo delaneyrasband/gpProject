@@ -181,21 +181,3 @@
     </div>
 </body>
 </html>
-```
-
----
-
-## Quick Setup Checklist:
-
-When your CloudFormation stack completes:
-
-1. **SSH to workstation** and run the SQL commands above
-2. **Update your GitHub repo:**
-   - Replace `index.js` with the version above (update RDS endpoint)
-   - Replace `index.ejs` with the version above
-   - Make sure `appspec.yml` uses `ec2-user` and `AfterInstall`
-   - Commit and push
-
-3. **Deploy via CodePipeline** and visit:
-```
-   http://<ProductionIP>:3000
