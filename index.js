@@ -1,14 +1,14 @@
 let express = require("express");
 let app = new express();                                                                     
-
+app.set("view engine","ejs")
 // set up database connection
 const knex = require("knex")({
  client: "mysql",
  connection: {
-  host:"concert-db-instance-1.c61dq6ysma4i.us-east-2.rds.amazonaws.com",
+  host:"concert-db.c7yskgwweg95.us-east-2.rds.amazonaws.com",
   user: "admin",
-  password: "Password1",
-  database:"paradise-concerts",
+  password: "password",
+  database:"travel",
   port: 3306,
  },
 });
@@ -16,10 +16,10 @@ const knex = require("knex")({
 app.get("/",(req,res) => {
  knex
  .select()
- .from("venues")
+ .from("national_parks")
  .then((result) => {
-  console.log(result);
-  res.send(result);
- }); 
+  res.render("index", {parks: result});
+ });
 });
+
 app.listen(3000);
